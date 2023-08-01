@@ -23,11 +23,17 @@ BUILD_GTEST:BOOL=OFF
 //Build shared libraries (DLLs).
 BUILD_SHARED_LIBS:BOOL=ON
 
+//List of ';' separated packages to exclude
+CATKIN_BLACKLIST_PACKAGES:STRING=
+
 //catkin devel space
 CATKIN_DEVEL_PREFIX:PATH=/home/justin/segmentation_ws/devel
 
 //Catkin enable testing
 CATKIN_ENABLE_TESTING:BOOL=ON
+
+//Prefix to apply to package generated via gendebian
+CATKIN_PACKAGE_PREFIX:STRING=
 
 //Catkin skip testing
 CATKIN_SKIP_TESTING:BOOL=OFF
@@ -35,6 +41,9 @@ CATKIN_SKIP_TESTING:BOOL=OFF
 //Replace the CMake install command with a custom implementation
 // using symlinks instead of copying resources
 CATKIN_SYMLINK_INSTALL:BOOL=OFF
+
+//List of ';' separated packages to build
+CATKIN_WHITELIST_PACKAGES:STRING=
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
@@ -167,7 +176,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=ros_segmentation
+CMAKE_PROJECT_NAME:STATIC=catkin_ws
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -307,6 +316,15 @@ _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
 
 //Value Computed by CMake
+catkin_ws_BINARY_DIR:STATIC=/home/justin/segmentation_ws/build
+
+//Value Computed by CMake
+catkin_ws_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+catkin_ws_SOURCE_DIR:STATIC=/home/justin/segmentation_ws/src
+
+//Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/justin/segmentation_ws/build/gtest/googlemock
 
 //Value Computed by CMake
@@ -365,13 +383,13 @@ gtest_hide_internal_symbols:BOOL=OFF
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //Value Computed by CMake
-ros_segmentation_BINARY_DIR:STATIC=/home/justin/segmentation_ws/build
+ros_segmentation_BINARY_DIR:STATIC=/home/justin/segmentation_ws/build/ros_segmentation
 
 //Value Computed by CMake
-ros_segmentation_IS_TOP_LEVEL:STATIC=ON
+ros_segmentation_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-ros_segmentation_SOURCE_DIR:STATIC=/home/justin/segmentation_ws/src
+ros_segmentation_SOURCE_DIR:STATIC=/home/justin/segmentation_ws/src/ros_segmentation
 
 
 ########################
@@ -489,7 +507,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
