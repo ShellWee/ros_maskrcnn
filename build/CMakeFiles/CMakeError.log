@@ -1,0 +1,65 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/justin/segmentation_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_8a953/fast && /usr/bin/make  -f CMakeFiles/cmTC_8a953.dir/build.make CMakeFiles/cmTC_8a953.dir/build
+make[1]: Entering directory '/home/justin/segmentation_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a953.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_8a953.dir/src.c.o -c /home/justin/segmentation_ws/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8a953
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a953.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_8a953.dir/src.c.o -o cmTC_8a953 
+CMakeFiles/cmTC_8a953.dir/src.c.o: 於函式 main:
+src.c:(.text+0x3e): 未定義參考到 pthread_create
+src.c:(.text+0x4a): 未定義參考到 pthread_detach
+src.c:(.text+0x56): 未定義參考到 pthread_cancel
+src.c:(.text+0x67): 未定義參考到 pthread_join
+src.c:(.text+0x7b): 未定義參考到 pthread_atfork
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_8a953.dir/build.make:98: recipe for target 'cmTC_8a953' failed
+make[1]: *** [cmTC_8a953] Error 1
+make[1]: Leaving directory '/home/justin/segmentation_ws/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_8a953/fast' failed
+make: *** [cmTC_8a953/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/justin/segmentation_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_bc681/fast && /usr/bin/make  -f CMakeFiles/cmTC_bc681.dir/build.make CMakeFiles/cmTC_bc681.dir/build
+make[1]: Entering directory '/home/justin/segmentation_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bc681.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_bc681.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.21/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bc681
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc681.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_bc681.dir/CheckFunctionExists.c.o -o cmTC_bc681  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_bc681.dir/build.make:98: recipe for target 'cmTC_bc681' failed
+make[1]: *** [cmTC_bc681] Error 1
+make[1]: Leaving directory '/home/justin/segmentation_ws/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_bc681/fast' failed
+make: *** [cmTC_bc681/fast] Error 2
+
+
+
