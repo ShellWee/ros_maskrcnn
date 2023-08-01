@@ -1,0 +1,8 @@
+<launch>
+  <node name="semantic" pkg="realsense2_camera" type="semantic_segmentation_node.py" output="screen">
+    <env name="PYTHONPATH" value="/path/to/yourenv/lib/python3.7/site-packages"/>
+  </node>
+  <node name="image_viewer" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/semantic_image"/>
+  </node>
+</launch>
