@@ -1,1 +1,1 @@
-# ros_segmentation
+# ros wrapper for Mask_RCNN
